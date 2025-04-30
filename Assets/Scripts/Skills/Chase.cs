@@ -7,19 +7,18 @@ using static UnityEngine.Rendering.DebugUI;
 public class Chase : MonoBehaviour
 {
     GameObject Parson;
-    Parameter bs;
+    BasicParameter bs;
     SkillsManager sm;
 
     SSCP sscp = SSCP.pri3;
 
     List<GameObject> targetList = new List<GameObject>();
     GameObject target;
-    float minRange;
 
-    float MoveSpeedBuffPer = 1.5f;
+    float moveSpeedBuffPer = 1.5f;
     void Start()
     {
-        bs = transform.root.GetComponentInChildren<Parameter>();
+        bs = transform.root.GetComponentInChildren<BasicParameter>();
         sm = transform.parent.GetComponent<SkillsManager>();
         Parson = transform.root.gameObject;
     }
@@ -47,7 +46,7 @@ public class Chase : MonoBehaviour
                 && Vector3.Distance(target.transform.position, transform.position) > 1.5f
                 && sm.SkillStateCheck(sscp))
             {
-                sm.SkillStateRequest(SSC.CanSkill);
+                sm.SkillStateChange(SSC.CanSkill);
                 ChaseToTarget();
             }
         }
@@ -58,7 +57,7 @@ public class Chase : MonoBehaviour
         Parson.transform.position = Vector3.MoveTowards(
         Parson.transform.position,
         target.transform.position,
-        bs.MoveSpeed * MoveSpeedBuffPer * Time.deltaTime
+        bs.MoveSpeed * moveSpeedBuffPer * Time.deltaTime
         );
     }
 }

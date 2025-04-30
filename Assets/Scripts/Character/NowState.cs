@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State : MonoBehaviour
+public class NowState : MonoBehaviour
 {
     public SSC SkillState { get; set; } = SSC.Free;
     public Dictionary<SSCP, HashSet<SSC>> sscpDict = new Dictionary<SSCP, HashSet<SSC>>()

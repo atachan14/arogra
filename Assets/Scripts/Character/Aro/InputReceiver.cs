@@ -3,13 +3,13 @@ using UnityEngine;
 public class InputReceiver : MonoBehaviour
 {
     NextPos np;
-    State state;
+    NowState state;
     Camera mainCam;
 
     private void Start()
     {
         np = transform.root.GetComponentInChildren<NextPos>();
-        state = transform.root.GetComponentInChildren<State>();
+        state = transform.root.GetComponentInChildren<NowState>();
         mainCam = Camera.main;
     }
     void Update()

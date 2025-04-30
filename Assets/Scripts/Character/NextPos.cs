@@ -6,8 +6,8 @@ using static UnityEngine.Rendering.DebugUI;
 public class NextPos : MonoBehaviour
 {
     [SerializeField] GameObject Parson;
-    [SerializeField] Parameter parameter;
-    [SerializeField] State state;
+    [SerializeField] BasicParameter parameter;
+    [SerializeField] NowState state;
     public Vector3 Value { get; set; }
 
 

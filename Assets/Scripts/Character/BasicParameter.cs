@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Parameter : MonoBehaviour
+public class BasicParameter : MonoBehaviour
 {
     [SerializeField] float speed = 3f;
     float size = 1f;

@@ -1,70 +1,121 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SkillsManager : MonoBehaviour
 {
-    State state;
-    Dictionary<GameObject, float> CtDict = new Dictionary<GameObject, float>();
-    List<GameObject> SkillList = new List<GameObject>();
+    public GameObject MainBody { get; set; }
+    public BasicParameter Parameter { get; set; }
+    public NowState State { get; set; }
 
+    List<GameObject> SkillList = new List<GameObject>();
+    Dictionary<GameObject, float> CtDict = new Dictionary<GameObject, float>();
+   
     void Start()
     {
-        state = transform.root.GetComponentInChildren<State>();
+        MainBody = transform.root.gameObject;
+        Parameter = MainBody.GetComponentInChildren<BasicParameter>();
+        State = MainBody.GetComponentInChildren<NowState>();
+
+        CreateSkillList();
+
+    }
+
+    void CreateSkillList()
+    {
+        SkillList = transform.Cast<Transform>()
+            .Where(t => t.gameObject.activeSelf)
+            .Select(t => t.gameObject)
+            .ToList();
     }
 
     private void Update()
     {
-        if (CtDict.Count != 0)
+        if (SkillList.Count != 0)
         {
-            CtCount();
+            RunSkillList();
         }
 
-
+        //if (CtDict.Count != 0)
+        //{
+        //    CtCount();
+        //}
     }
 
-    void CtCount()
+    void RunSkillList()
     {
-        var keys = CtDict.Keys.ToList();
-        foreach (var skill in keys)
+        foreach (GameObject skill in SkillList)
         {
-            CtDict[skill] -= Time.deltaTime;
-            if (CtDict[skill] <= 0f)
-            {
-                skill.SetActive(true);
-                CtDict.Remove(skill);
-            }
+            if(!CheckersWork(skill)) continue;
+            StartCoroutine(DecideWork(skill));
         }
     }
+
+    bool CheckersWork(GameObject skill)
+    {
+        var tc = skill.GetComponentInChildren<ITargetChecker>();
+        if (!tc.SetupTarget()) return false;
+        //Debug.Log($"{skill}ターゲットTrue。SkillState:{State.SkillState}");
+
+        var rc = skill.GetComponentInChildren<RequireCkecker>();
+        if (rc.Ct > 0) return false;
+        //Debug.Log($"{skill}クールタイムTrue。SkillState:{State.SkillState}");
+
+
+        if (!SkillStateCheck(rc.Need)) return false;
+
+        Debug.Log($"{skill}発火。SkillState:{State.SkillState}");
+        return true;
+
+        
+    }
+
+    IEnumerator DecideWork(GameObject skill)
+    {
+        var rc = skill.GetComponentInChildren<RequireCkecker>();
+        var executor = skill.GetComponentInChildren<ISkillActor>();
+        var asbp = skill.GetComponentInChildren<ASBP>();
+
+        SkillStateChange(rc.Change);
+        yield return StartCoroutine(executor.ActCoroutineFlow());
+        rc.AddCt(asbp.Ct);
+    }
+
 
     public void LayerSetting(CampType campType)
     {
         gameObject.layer = LayerMask.NameToLayer(campType.ToString());
-        foreach (Transform child in transform)
+        foreach (var checker in GetComponentsInChildren<ITargetChecker>())
         {
-            child.gameObject.layer = gameObject.layer;
+            var component = checker as Component;
+            if (component != null)
+            {
+                component.gameObject.layer = gameObject.layer;
+            }
         }
     }
 
     public bool SkillStateCheck(HashSet<SSC> sscSet)
     {
-        return sscSet.Contains(state.SkillState);
+        return sscSet.Contains(State.SkillState);
     }
 
     public bool SkillStateCheck(SSCP sscp)
     {
-        return state.CheckSSCP(sscp);
+        return State.CheckSSCP(sscp);
     }
 
-    public void SkillStateRequest(SSC value)
+    public void SkillStateChange(SSC value)
     {
-        state.SkillState = value;
+        State.SkillState = value;
     }
 
-    public void CtReq(GameObject skill, float ct)
-    {
-        CtDict.Add(skill, ct);
-        skill.SetActive(false);
-    }
+    //public void CtReq(GameObject skill, float ct)
+    //{
+    //    CtDict.Add(skill, ct);
+    //}
 }

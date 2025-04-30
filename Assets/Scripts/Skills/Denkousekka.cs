@@ -4,53 +4,38 @@ using Unity.Mathematics;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
-public class Denkousekka : MonoBehaviour
+public class Denkousekka : MonoBehaviour,ISkillActor
 {
-
-    GameObject Parson;
-    Parameter parameter;
-    SkillsManager sm;
+    SkillsManager SM;
     ASBP asbp;
+    GameObject MainBody;
+    GameObject ac;
 
-    SSCP sscp = SSCP.pri3;
+    public GameObject Target { get; set; }
 
-    Vector3 distance;
     Vector3 targetPos;
+    Vector3 distance;
 
     void Start()
     {
-        parameter = transform.root.GetComponentInChildren<Parameter>();
-        sm = transform.parent.GetComponent<SkillsManager>();
-        asbp = GetComponent<ASBP>();
-        Parson = transform.root.gameObject;
+        SM = GetComponentInParent<SkillsManager>();
+        asbp = transform.parent.GetComponentInChildren<ASBP>();
+        MainBody = transform.root.gameObject;
+        ac = transform.GetChild(0).gameObject;
 
     }
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (sm.SkillStateCheck(sscp))
-        {
-            sm.SkillStateRequest(SSC.NowSkill);
-            Exe(collision);
-        }
-    }
 
-    void Exe(Collider2D collision)
+    public IEnumerator ActCoroutineFlow()
     {
-        Vector3 distance = collision.transform.position - transform.position;
+        Vector3 distance = Target.transform.position - transform.position;
         Vector3 direction = distance.normalized;
         targetPos = transform.position + distance + direction * 3f;
 
-        StartCoroutine(ExeCoroutineFlow());
-    }
-
-    IEnumerator ExeCoroutineFlow()
-    {
         yield return StartCoroutine(FrontFrame());
         yield return StartCoroutine(MiddleFrame());
         yield return StartCoroutine(BackFrame());
-        sm.SkillStateRequest(SSC.Free);
-        sm.CtReq(gameObject, asbp.Ct);
+        SM.SkillStateChange(SSC.Free);
     }
 
     IEnumerator FrontFrame()
@@ -58,46 +43,54 @@ public class Denkousekka : MonoBehaviour
         float duration = asbp.FrontFrame;
         float timer = 0f;
 
-        Vector3 startScale = Parson.transform.localScale;
+        Vector3 startScale = MainBody.transform.localScale;
         Vector3 endScale = new Vector3(startScale.x, startScale.y * 0.4f, startScale.z);
 
         while (timer < duration)
         {
             timer += Time.deltaTime;
             float t = timer / duration;
-            Parson.transform.localScale = Vector3.Lerp(startScale, endScale, t);
+            MainBody.transform.localScale = Vector3.Lerp(startScale, endScale, t);
             yield return null;
         }
 
-        Parson.transform.localScale = endScale;
+        MainBody.transform.localScale = endScale;
     }
 
     IEnumerator MiddleFrame()
     {
+        //体のサイズ
+        Vector3 startScale = MainBody.transform.localScale;
+        MainBody.transform.localScale = new Vector3(startScale.x * 1.6f, startScale.y, startScale.z);
 
-        Vector3 startScale = Parson.transform.localScale;
-        Parson.transform.localScale = new Vector3(startScale.x * 1.6f, startScale.y, startScale.z);
-
-        float duration = 0.2f;
+        //時間設定
+        float duration = asbp.MiddleFrame;
         float timer = 0f;
 
-        distance = Parson.transform.position - targetPos;
-        Vector3 startPos = Parson.transform.position;
+        //位置設定
+        distance = MainBody.transform.position - targetPos;
+        Vector3 startPos = MainBody.transform.position;
 
+        //攻撃判定Active
+        ac.SetActive(true);
+
+        //実行
         while (timer < duration)
         {
             timer += Time.deltaTime;
             float t = timer / duration;
-            Parson.transform.position = Vector3.Lerp(startPos, targetPos, t);
+            MainBody.transform.position = Vector3.Lerp(startPos, targetPos, t);
             yield return null;
         }
 
-        Parson.transform.position = targetPos;
+        //到着
+        MainBody.transform.position = targetPos;
     }
 
     IEnumerator BackFrame()
     {
-        Parson.transform.localScale = parameter.NaturalSize();
+        ac.SetActive(false);
+        MainBody.transform.localScale = SM.Parameter.NaturalSize();
         yield return new WaitForSeconds(asbp.BackFrame);
         
 

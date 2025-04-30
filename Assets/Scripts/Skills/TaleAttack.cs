@@ -3,53 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class TaleAttack : MonoBehaviour
+public class TaleAttack : MonoBehaviour,ISkillActor
 {
-    GameObject Parson;
-    Parameter parameter;
-    SkillsManager sm;
+    SkillsManager SM;
+    //GameObject parson;
+    //BasicParameter parameter;
+    
     ASBP asbp;
-
     [SerializeField] GameObject ac; //attackCollision
-    SSCP sscp = SSCP.pri3;
 
-    Vector3 targetPos;
+    public GameObject Target { get; set; }
+
     int stack = 0;
 
     void Start()
     {
-        parameter = transform.root.GetComponentInChildren<Parameter>();
-        sm = transform.parent.GetComponent<SkillsManager>();
-        asbp = GetComponent<ASBP>();
-        Parson = transform.root.gameObject;
-
+        SM = GetComponentInParent<SkillsManager>();
+        //parson = SM.BC.gameObject;
+        //parameter = SM.BP;
+        asbp = transform.parent.GetComponentInChildren<ASBP>();
     }
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (sm.SkillStateCheck(sscp))
-        {
-            sm.SkillStateRequest(SSC.NowSkill);
-            Exe(collision);
-        }
-    }
 
-    void Exe(Collider2D collision)
-    {
-        Vector3 distance = collision.transform.position - transform.position;
-        Vector3 direction = distance.normalized;
-        targetPos = transform.position + distance + direction * 3f;
 
-        StartCoroutine(ExeCoroutineFlow());
-    }
-
-    IEnumerator ExeCoroutineFlow()
+    public IEnumerator ActCoroutineFlow()
     {
         yield return StartCoroutine(FrontFrame());
         yield return StartCoroutine(MiddleFrame());
         yield return StartCoroutine(BackFrame());
-        sm.SkillStateRequest(SSC.Free);
-        sm.CtReq(gameObject, asbp.Ct);
+        SM.SkillStateChange(SSC.Free);
+        //SM.CtReq(gameObject, asbp.Ct);
     }
 
     IEnumerator FrontFrame()
@@ -59,9 +42,11 @@ public class TaleAttack : MonoBehaviour
 
     IEnumerator MiddleFrame()
     {
+        //transform.position = parson.transform.position;
+        //ac.transform.position = transform.position;
+
         stack++;
-        transform.position = Parson.transform.position;
-        ac.transform.position = transform.position;
+        Vector3 targetPos = Target.transform.position;
 
         Vector2 dir = targetPos - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
