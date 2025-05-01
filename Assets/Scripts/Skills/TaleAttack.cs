@@ -6,8 +6,6 @@ using static UnityEngine.GraphicsBuffer;
 public class TaleAttack : MonoBehaviour,ISkillActor
 {
     SkillsManager SM;
-    //GameObject parson;
-    //BasicParameter parameter;
     
     ASBP asbp;
     [SerializeField] GameObject ac; //attackCollision
@@ -19,8 +17,6 @@ public class TaleAttack : MonoBehaviour,ISkillActor
     void Start()
     {
         SM = GetComponentInParent<SkillsManager>();
-        //parson = SM.BC.gameObject;
-        //parameter = SM.BP;
         asbp = transform.parent.GetComponentInChildren<ASBP>();
     }
 
@@ -42,20 +38,25 @@ public class TaleAttack : MonoBehaviour,ISkillActor
 
     IEnumerator MiddleFrame()
     {
-        //transform.position = parson.transform.position;
-        //ac.transform.position = transform.position;
+        transform.position = SM.MainBody.transform.position;
+        ac.transform.position = transform.position;
 
         stack++;
-        Vector3 targetPos = Target.transform.position;
 
+        //たーげっとの位置確認。
+        Vector3 targetPos = Target.transform.position;
         Vector2 dir = targetPos - transform.position;
+
+        //あんぐる設定。
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         float startAngle = angle - 30f;
         float endAngle = angle + 30f;
         if (stack == 3) { endAngle += angle + 360f; stack = 0; }
 
+        //攻撃判定Active。
         ac.SetActive(true); 
 
+        //時間せってい。
         float duration = asbp.MiddleFrame;
         float time = 0;
 

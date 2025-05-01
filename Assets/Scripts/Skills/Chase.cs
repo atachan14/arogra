@@ -1,63 +1,41 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class Chase : MonoBehaviour
+public class Chase : MonoBehaviour, ISkillActor
 {
-    GameObject Parson;
-    BasicParameter bs;
     SkillsManager sm;
+    SkillsParent sp;
 
-    SSCP sscp = SSCP.pri3;
 
-    List<GameObject> targetList = new List<GameObject>();
-    GameObject target;
+    public GameObject Target { get; set; }
 
     float moveSpeedBuffPer = 1.5f;
+
+
+
     void Start()
     {
-        bs = transform.root.GetComponentInChildren<BasicParameter>();
-        sm = transform.parent.GetComponent<SkillsManager>();
-        Parson = transform.root.gameObject;
+        sm = GetComponentInParent<SkillsManager>();
+        sp = GetComponentInParent<SkillsParent>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public IEnumerator ActCoroutineFlow() 
     {
-        targetList.Add(other.gameObject);
+        yield return StartCoroutine(ChaseToTarget());
+
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    IEnumerator ChaseToTarget()
     {
-        targetList.Remove(other.gameObject);
-    }
-
-    void Update()
-    {
-        if (targetList.Count > 0)
-        {
-            target = targetList
-                .Where(t => t != null)
-                .OrderBy(t => Vector3.Distance(t.transform.position, transform.position))
-                .FirstOrDefault();
-
-            if (target != null
-                && Vector3.Distance(target.transform.position, transform.position) > 1.5f
-                && sm.SkillStateCheck(sscp))
-            {
-                sm.SkillStateChange(SSC.CanSkill);
-                ChaseToTarget();
-            }
-        }
-    }
-
-    void ChaseToTarget()
-    {
-        Parson.transform.position = Vector3.MoveTowards(
-        Parson.transform.position,
-        target.transform.position,
-        bs.MoveSpeed * moveSpeedBuffPer * Time.deltaTime
+        yield return null;
+        sm.MainBody.transform.position = Vector3.MoveTowards(
+        sm.MainBody.transform.position,
+        Target.transform.position,
+        sm.Parameter.MoveSpeed * moveSpeedBuffPer * Time.deltaTime
         );
     }
 }

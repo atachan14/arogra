@@ -11,12 +11,12 @@ public abstract class DefaultTargetChecker : MonoBehaviour, ITargetChecker
     {
         sp = GetComponentInParent<SkillsParent>();
         SetupCollider();
-        Debug.Log($"{this}StartŠ®—¹Bsp:{sp}");
     }
 
     void SetupCollider()
     {
         GetComponent<CircleCollider2D>().radius = sp.asbp.ActRange;
+        Debug.Log($"{this}SetupColliderŠ®—¹Bsp:{sp}");
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)

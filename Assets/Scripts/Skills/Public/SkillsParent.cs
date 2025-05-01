@@ -7,7 +7,7 @@ public class SkillsParent : MonoBehaviour
     public ISkillActor sa { get; set; }
     public ASBP asbp { get; set; }
 
-    void Start()
+    void Awake()
     {
         tc = GetComponentInChildren<ITargetChecker>();
         rc = GetComponentInChildren<RequireCkecker>();
