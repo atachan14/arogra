@@ -13,8 +13,6 @@ public class Chase : MonoBehaviour, ISkillActor
 
     public GameObject Target { get; set; }
 
-    float moveSpeedBuffPer = 1.5f;
-
 
 
     void Start()
@@ -35,7 +33,7 @@ public class Chase : MonoBehaviour, ISkillActor
         sm.MainBody.transform.position = Vector3.MoveTowards(
         sm.MainBody.transform.position,
         Target.transform.position,
-        sm.Parameter.MoveSpeed * moveSpeedBuffPer * Time.deltaTime
+        sm.Parameter.MoveSpeed * sp.asbp.bp.msBuffPer * Time.deltaTime
         );
     }
 }

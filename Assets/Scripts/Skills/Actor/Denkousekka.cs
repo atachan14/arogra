@@ -5,7 +5,6 @@ public class Denkousekka : MonoBehaviour,ISkillActor
 {
     SkillsManager SM;
     ASBP asbp;
-    GameObject MainBody;
     GameObject ac;
 
     public GameObject Target { get; set; }
@@ -17,7 +16,6 @@ public class Denkousekka : MonoBehaviour,ISkillActor
     {
         SM = GetComponentInParent<SkillsManager>();
         asbp = transform.parent.GetComponentInChildren<ASBP>();
-        MainBody = transform.root.gameObject;
         ac = transform.GetChild(0).gameObject;
 
     }
@@ -40,33 +38,33 @@ public class Denkousekka : MonoBehaviour,ISkillActor
         float duration = asbp.fp.frontFrame;
         float timer = 0f;
 
-        Vector3 startScale = MainBody.transform.localScale;
+        Vector3 startScale = SM.BodySprite.transform.localScale;
         Vector3 endScale = new Vector3(startScale.x, startScale.y * 0.4f, startScale.z);
 
         while (timer < duration)
         {
             timer += Time.deltaTime;
             float t = timer / duration;
-            MainBody.transform.localScale = Vector3.Lerp(startScale, endScale, t);
+            SM.BodySprite.transform.localScale = Vector3.Lerp(startScale, endScale, t);
             yield return null;
         }
 
-        MainBody.transform.localScale = endScale;
+        SM.BodySprite.transform.localScale = endScale;
     }
 
     IEnumerator MiddleFrame()
     {
         //体のサイズ
-        Vector3 startScale = MainBody.transform.localScale;
-        MainBody.transform.localScale = new Vector3(startScale.x * 1.6f, startScale.y, startScale.z);
+        Vector3 startScale = SM.BodySprite.transform.localScale;
+        SM.BodySprite.transform.localScale = new Vector3(startScale.x * 1.6f, startScale.y, startScale.z);
 
         //時間設定
         float duration = asbp.fp.middleFrame;
         float timer = 0f;
 
         //位置設定
-        distance = MainBody.transform.position - targetPos;
-        Vector3 startPos = MainBody.transform.position;
+        distance = SM.BodySprite.transform.position - targetPos;
+        Vector3 startPos = SM.MainBody.transform.position;
 
         //攻撃判定Active
         ac.SetActive(true);
@@ -76,18 +74,18 @@ public class Denkousekka : MonoBehaviour,ISkillActor
         {
             timer += Time.deltaTime;
             float t = timer / duration;
-            MainBody.transform.position = Vector3.Lerp(startPos, targetPos, t);
+            SM.MainBody.transform.position = Vector3.Lerp(startPos, targetPos, t);
             yield return null;
         }
 
         //到着
-        MainBody.transform.position = targetPos;
+        SM.MainBody.transform.position = targetPos;
     }
 
     IEnumerator BackFrame()
     {
         ac.SetActive(false);
-        MainBody.transform.localScale = SM.Parameter.NaturalSize();
+        SM.BodySprite.transform.localScale = SM.Parameter.NaturalSize();
         yield return new WaitForSeconds(asbp.fp.backFrame);
         
 

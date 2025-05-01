@@ -49,5 +49,11 @@ TagManager:
   - name: AttackCollision
     uniqueID: 508779701
     locked: 0
+  - name: Unit
+    uniqueID: 3001577337
+    locked: 0
+  - name: BG
+    uniqueID: 115350341
+    locked: 0
   m_RenderingLayers:
   - Default

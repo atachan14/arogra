@@ -326,6 +326,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1418300974284540958, guid: a549e1225b1b1c740b86b1cc760aec50, type: 3}
+      propertyPath: bp.msBuffPer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418300974284540958, guid: a549e1225b1b1c740b86b1cc760aec50, type: 3}
       propertyPath: rp.targetRange
       value: 15
       objectReference: {fileID: 0}
@@ -556,7 +560,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: b56aaaedb55c531e
+  m_ApplyToSortingLayers: b56aaaedb55c531e451be006796fe8b2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -795,7 +799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1810741177
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -839,9 +843,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3301887, g: 0.2369458, b: 0.07320221, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1440,6 +1444,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6702809019887060538, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
+      propertyPath: m_ShadowsEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702809019887060538, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
       value: -0.00000011920929
       objectReference: {fileID: 0}
@@ -1510,6 +1518,30 @@ PrefabInstance:
     - target: {fileID: 8911987088909885826, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164835494656935573, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164835494656935573, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164835494656935573, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9786186
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164835494656935573, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164835494656935573, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164835494656935573, guid: 63f0544d23b3311419ac74ddb74c1fad, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 115350341
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -8,7 +8,9 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SkillsManager : MonoBehaviour
 {
-    public GameObject MainBody { get; set; }
+
+    public MainBody MainBody { get; set; }
+    public BodySprite BodySprite { get; set; }
     public BasicParameter Parameter { get; set; }
     public NowState State { get; set; }
 
@@ -17,7 +19,8 @@ public class SkillsManager : MonoBehaviour
    
     void Start()
     {
-        MainBody = transform.root.gameObject;
+        MainBody = GetComponentInParent<MainBody>();
+        BodySprite = MainBody.GetComponentInChildren<BodySprite>();
         Parameter = MainBody.GetComponentInChildren<BasicParameter>();
         State = MainBody.GetComponentInChildren<NowState>();
 

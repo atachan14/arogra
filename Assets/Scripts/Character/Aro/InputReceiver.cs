@@ -14,7 +14,7 @@ public class InputReceiver : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) ClickMove();
+        if (Input.GetMouseButtonDown(1)) ClickMove();
         if (Input.GetKey(KeyCode.Space)) CameraMove();
     }
 

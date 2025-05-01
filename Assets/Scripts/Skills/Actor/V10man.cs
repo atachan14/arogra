@@ -19,8 +19,5 @@ public class V10man : DefaultSkillActor
             ac.SetActive(false);
             yield return new WaitForSeconds(duration);
         }
-
     }
-
-
 }

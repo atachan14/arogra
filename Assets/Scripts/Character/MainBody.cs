@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BaseCreaturer : MonoBehaviour
+public class MainBody : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -10,11 +10,6 @@ public class BaseCreaturer : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
     {
         
     }

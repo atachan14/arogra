@@ -1,7 +1,6 @@
-﻿# 優先バグ
-	- TargetListが空のバグ
+﻿# 開発リスト
 
-# 開発リスト
+	- Chaseしすぎ問題
 
 	- graのskill
 
