@@ -39,11 +39,6 @@ public class SkillsManager : MonoBehaviour
         {
             RunSkillList();
         }
-
-        //if (CtDict.Count != 0)
-        //{
-        //    CtCount();
-        //}
     }
 
     void RunSkillList()
@@ -58,12 +53,10 @@ public class SkillsManager : MonoBehaviour
     bool CheckersWork(GameObject skill)
     {
         var tc = skill.GetComponentInChildren<ITargetChecker>();
-        if (!tc.SetupTarget()) return false;
-        //Debug.Log($"{skill}ターゲットTrue。SkillState:{State.SkillState}");
+        if (!tc.SetupAndCheckTarget()) return false;
 
         var rc = skill.GetComponentInChildren<RequireCkecker>();
         if (rc.Ct > 0) return false;
-        //Debug.Log($"{skill}クールタイムTrue。SkillState:{State.SkillState}");
 
 
         if (!SkillStateCheck(rc.Need)) return false;
@@ -82,7 +75,7 @@ public class SkillsManager : MonoBehaviour
 
         SkillStateChange(rc.Change);
         yield return StartCoroutine(executor.ActCoroutineFlow());
-        rc.AddCt(asbp.Ct);
+        rc.AddCt(asbp.rp.ct);
     }
 
 

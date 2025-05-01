@@ -37,7 +37,7 @@ public class Denkousekka : MonoBehaviour,ISkillActor
 
     IEnumerator FrontFrame()
     {
-        float duration = asbp.FrontFrame;
+        float duration = asbp.fp.frontFrame;
         float timer = 0f;
 
         Vector3 startScale = MainBody.transform.localScale;
@@ -61,7 +61,7 @@ public class Denkousekka : MonoBehaviour,ISkillActor
         MainBody.transform.localScale = new Vector3(startScale.x * 1.6f, startScale.y, startScale.z);
 
         //éûä‘ê›íË
-        float duration = asbp.MiddleFrame;
+        float duration = asbp.fp.middleFrame;
         float timer = 0f;
 
         //à íuê›íË
@@ -88,7 +88,7 @@ public class Denkousekka : MonoBehaviour,ISkillActor
     {
         ac.SetActive(false);
         MainBody.transform.localScale = SM.Parameter.NaturalSize();
-        yield return new WaitForSeconds(asbp.BackFrame);
+        yield return new WaitForSeconds(asbp.fp.backFrame);
         
 
 

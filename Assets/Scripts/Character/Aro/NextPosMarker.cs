@@ -8,7 +8,6 @@ public class NextPosMarker : MonoBehaviour
     private void Start()
     {
         np = transform.root.GetComponentInChildren<NextPos>();
-        defaultScale = transform.localScale;
     }
     void Update()
     {
@@ -17,6 +16,5 @@ public class NextPosMarker : MonoBehaviour
             transform.position = np.Value;
             
         }
-        transform.localScale = defaultScale;
     }
 }

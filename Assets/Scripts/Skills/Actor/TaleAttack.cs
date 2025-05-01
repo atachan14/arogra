@@ -6,9 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 public class TaleAttack : MonoBehaviour,ISkillActor
 {
     SkillsManager SM;
-    
     ASBP asbp;
-    [SerializeField] GameObject ac; //attackCollision
+    [SerializeField] GameObject ac;
 
     public GameObject Target { get; set; }
 
@@ -28,12 +27,11 @@ public class TaleAttack : MonoBehaviour,ISkillActor
         yield return StartCoroutine(MiddleFrame());
         yield return StartCoroutine(BackFrame());
         SM.SkillStateChange(SSC.Free);
-        //SM.CtReq(gameObject, asbp.Ct);
     }
 
     IEnumerator FrontFrame()
     {
-        yield return new WaitForSeconds(asbp.FrontFrame);
+        yield return new WaitForSeconds(asbp.fp.frontFrame);
     }
 
     IEnumerator MiddleFrame()
@@ -57,7 +55,7 @@ public class TaleAttack : MonoBehaviour,ISkillActor
         ac.SetActive(true); 
 
         //éûä‘ÇπÇ¡ÇƒÇ¢ÅB
-        float duration = asbp.MiddleFrame;
+        float duration = asbp.fp.middleFrame;
         float time = 0;
 
         while (time < duration)
@@ -74,6 +72,6 @@ public class TaleAttack : MonoBehaviour,ISkillActor
     IEnumerator BackFrame()
     {
 
-        yield return new WaitForSeconds(asbp.BackFrame);
+        yield return new WaitForSeconds(asbp.fp.backFrame);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ToFarthest : DefaultTargetChecker
 {
-    public override bool SetupTarget()
+    public override bool SetupAndCheckTarget()
     {
         if (targetList.Count > 0)
         {

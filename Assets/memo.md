@@ -1,14 +1,13 @@
-﻿# 優先バグ
-	- TargetListが空のバグ
+﻿# 開発リスト
 
-# 開発リスト
-
-	- graのskill
+	- 10万ボルト
 
 	- 複数aro
 		- Active UI
 		- NextPosMarker
 		- 
+
+	- graのskill
 
 	- Skill拡張
 		- ct

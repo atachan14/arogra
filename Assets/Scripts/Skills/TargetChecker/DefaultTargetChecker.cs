@@ -15,7 +15,7 @@ public abstract class DefaultTargetChecker : MonoBehaviour, ITargetChecker
 
     void SetupCollider()
     {
-        GetComponent<CircleCollider2D>().radius = sp.asbp.ActRange;
+        GetComponent<CircleCollider2D>().radius = sp.asbp.rp.targetRange;
         Debug.Log($"{this}SetupColliderŠ®—¹Bsp:{sp}");
     }
 
@@ -29,5 +29,5 @@ public abstract class DefaultTargetChecker : MonoBehaviour, ITargetChecker
         targetList.Remove(other.gameObject);
     }
 
-    public abstract bool SetupTarget();
+    public abstract bool SetupAndCheckTarget();
 }

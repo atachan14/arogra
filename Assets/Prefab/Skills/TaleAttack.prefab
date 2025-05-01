@@ -44,11 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33aa0a526063fc4c9cd17c402676b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontFrame: 0.3
-  middleFrame: 0.2
-  backFrame: 0.3
-  ct: 1
-  actRange: 1.5
+  fp:
+    frontFrame: 0.5
+    middleFrame: 0.2
+    backFrame: 0.5
+  rp:
+    targetRange: 1.5
+    numOfPeaple: 0
+    ct: 0.5
+  ap:
+    actCount: 0
+    acRange: 0
 --- !u!1 &1881683924130676757
 GameObject:
   m_ObjectHideFlags: 0
