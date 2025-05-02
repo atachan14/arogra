@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CampType
+public enum LayerMask
 {
-    Aro,
-    Gra
+    AroHeart,
+    GraHeart,
+    ArosChecker,
+    GrasChecker
 }
 
 public enum SSC //#SkillStateCode

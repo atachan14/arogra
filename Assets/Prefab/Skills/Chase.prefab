@@ -343,11 +343,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33aa0a526063fc4c9cd17c402676b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontFrame: 1
-  middleFrame: 1
-  backFrame: 1
-  ct: 0
-  actRange: 15
+  fp:
+    frontFrame: 0
+    middleFrame: 0
+    backFrame: 0
+  rp:
+    targetRange: 12
+    numOfPeaple: 0
+    ct: 0
+  ap:
+    actCount: 0
+    acRange: 0
+  bp:
+    msBuffPer: 2
 --- !u!1 &8378811238792710866
 GameObject:
   m_ObjectHideFlags: 0

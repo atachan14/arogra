@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8006915883490759228}
   - component: {fileID: 6137449232656874474}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.07058824, b: 1, a: 0.59607846}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -188,6 +188,8 @@ MonoBehaviour:
   ap:
     actCount: 0
     acRange: 0
+  bp:
+    msBuffPer: 0
 --- !u!1 &5919659836335490888
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9122265404293832901}
   - component: {fileID: 3956512951733772823}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: AttackCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

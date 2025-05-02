@@ -36,8 +36,9 @@ public class TaleAttack : MonoBehaviour,ISkillActor
 
     IEnumerator MiddleFrame()
     {
-        transform.position = SM.MainBody.transform.position;
-        ac.transform.position = transform.position;
+        //transform•Û‘¶
+        Vector3 startTransform = transform.position;
+        Vector3 startACTransformac = ac.transform.position;
 
         stack++;
 
@@ -66,6 +67,11 @@ public class TaleAttack : MonoBehaviour,ISkillActor
             transform.rotation = Quaternion.Euler(0, 0, currentAngle);
             yield return null;
         }
+
+        //transform•œŒ³
+        transform.position = startTransform;
+        ac.transform.position = startACTransformac;
+
         ac.SetActive(false);
     }
 

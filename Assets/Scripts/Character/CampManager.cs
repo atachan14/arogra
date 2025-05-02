@@ -8,8 +8,8 @@ public class CampManager : MonoBehaviour
         gameObject.name = transform.root.name + "_Camp";
     }
 
-    public void LayerSetting(CampType campType)
+    public void LayerSetting(LayerMask campType)
     {
-        gameObject.layer = LayerMask.NameToLayer(campType.ToString());
+        gameObject.layer = UnityEngine.LayerMask.NameToLayer(campType.ToString());
     }
 }

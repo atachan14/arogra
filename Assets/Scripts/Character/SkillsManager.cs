@@ -82,9 +82,9 @@ public class SkillsManager : MonoBehaviour
     }
 
 
-    public void LayerSetting(CampType campType)
+    public void LayerSetting(LayerMask campType)
     {
-        gameObject.layer = LayerMask.NameToLayer(campType.ToString());
+        gameObject.layer = UnityEngine.LayerMask.NameToLayer(campType.ToString());
         foreach (var checker in GetComponentsInChildren<ITargetChecker>())
         {
             var component = checker as Component;

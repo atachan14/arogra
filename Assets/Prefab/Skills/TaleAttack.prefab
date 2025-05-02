@@ -55,6 +55,8 @@ MonoBehaviour:
   ap:
     actCount: 0
     acRange: 0
+  bp:
+    msBuffPer: 0
 --- !u!1 &1881683924130676757
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,9 +326,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1019750057113956543, guid: eb5ed08371e0c434aa01969eee8f4f33, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019750057113956543, guid: eb5ed08371e0c434aa01969eee8f4f33, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019750057113956543, guid: eb5ed08371e0c434aa01969eee8f4f33, type: 3}
+      propertyPath: m_Color.g
+      value: 0.06900811
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019750057113956543, guid: eb5ed08371e0c434aa01969eee8f4f33, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8765525065573922768, guid: eb5ed08371e0c434aa01969eee8f4f33, type: 3}
       propertyPath: m_Name
       value: AttackCollision
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765525065573922768, guid: eb5ed08371e0c434aa01969eee8f4f33, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
