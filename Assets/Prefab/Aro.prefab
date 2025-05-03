@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d266457143217f649b2d9f33f01792ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NP: {fileID: 0}
 --- !u!1 &3826510063032166426
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +148,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.61887246, g: 1, b: 0.4009434, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -232,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd41c30c83fcf24ead614e7a0f52fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  receiver: {fileID: 1412893965653255580}
 --- !u!1 &8895282931670112979
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,5 +276,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135aaa7c1473f884ea9cd5bcbf8af4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  np: {fileID: 0}
-  state: {fileID: 0}
