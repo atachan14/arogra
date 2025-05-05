@@ -1,16 +1,22 @@
+using UnityEditor.Build;
 using UnityEngine;
 
 public class MainBody : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    bool alive = true; 
+    public bool Alive
+    { 
+        get => alive;
+        set
+        {
+            alive = value;
+            if (!value) DeadFlow();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void DeadFlow()
     {
-        
+        Debug.Log($"Ž„‚ÍŽ€‚ñ‚¾{this}");
     }
+
 }

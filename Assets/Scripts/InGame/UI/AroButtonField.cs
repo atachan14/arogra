@@ -38,7 +38,16 @@ public class AroButtonField : MonoBehaviour
         receiver = AM.Receiver;
         markerSr = AM.Marker.GetComponentInChildren<SpriteRenderer>();
 
-        markerSr.color = markerImage.color;
+        Color markerColor = markerImage.color;
+
+        ColorShadow colorShadow = AM.GetComponentInChildren<ColorShadow>();
+        SpriteRenderer colorShadowSr = colorShadow.GetComponent<SpriteRenderer>();
+        colorShadowSr.color = markerColor;
+
+        markerColor.a = 0.2f;
+        markerSr.color = markerColor;
+
+       
 
         var bodySprite = AM.transform.root
             .GetComponentInChildren<BodySprite>()

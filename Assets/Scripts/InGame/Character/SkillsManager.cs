@@ -64,7 +64,7 @@ public class SkillsManager : MonoBehaviour
 
         if (!SkillStateCheck(rc.Need)) return false;
 
-        Debug.Log($"{skill}”­‰ÎBSkillState:{State.SkillState}");
+        //Debug.Log($"{skill}”­‰ÎBSkillState:{State.SkillState}");
         return true;
 
         

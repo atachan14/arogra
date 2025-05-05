@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class BasicParameter : MonoBehaviour
 {
-    [SerializeField] float speed = 3f;
-    float size = 1f;
-    float physical = 20;
-    float hp = 100;
+    [SerializeField] float hp = 100;
+    [SerializeField] float physical = 1;
+    [SerializeField] float agile = 3f;
+    [SerializeField] float size = 1;
+    
+    
     
 
-    public float MoveSpeed { get => speed; set => speed = value; }
+    public float MoveSpeed { get => agile; set => agile = value; }
 
     public Vector3 NaturalSize()
     {

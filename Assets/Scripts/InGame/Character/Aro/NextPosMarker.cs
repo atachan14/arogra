@@ -7,13 +7,13 @@ public class NextPosMarker : MonoBehaviour
     private void Start()
     {
         np = transform.root.GetComponentInChildren<NextPos>();
-        SetupColor();
+        //SetupColor();
     }
 
     void SetupColor()
     {
         Color npmColor = transform.root.GetComponentInChildren<BodySprite>().GetComponent<SpriteRenderer>().color;
-        npmColor.a = 0.5f;
+        npmColor.a = 0.2f;
         GetComponent<SpriteRenderer>().color = npmColor;
     }
 
