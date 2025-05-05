@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SomethingThrow : MonoBehaviour
+public class SomethingThrow : MonoBehaviour, ISkillActor
 {
     SkillsManager SM;
     ASBP asbp;
@@ -37,11 +37,12 @@ public class SomethingThrow : MonoBehaviour
         yield return null;
 
         Vector3 targetPos = Target.transform.position;
-        Vector3 dir = targetPos - transform.position;
        
         //çUåÇîªíËê∂ê¨ÅB
         GameObject item = Instantiate(ac);
-        item.GetComponent<IThrowable>().ActThrow(dir,asbp.ap.throwSpeed);
+        item.transform.position = transform.position;
+        Debug.Log($"Stoneç¿ïWÅF{item.transform.position}");
+        item.GetComponent<IThrowable>().ActThrow(targetPos, asbp.ap.throwSpeed);
 
     }
 

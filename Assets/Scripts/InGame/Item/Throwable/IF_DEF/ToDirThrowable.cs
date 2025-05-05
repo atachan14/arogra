@@ -4,16 +4,18 @@ public class ToDirThrowable : MonoBehaviour, IThrowable
 {
     Vector3 dir;
     float speed;
-    public void ActThrow(Vector3 dir,float speed)
+    public void ActThrow(Vector3 targetPos, float speed)
     {
-        this.dir = dir;
+        dir = targetPos - transform.position;
         this.speed = speed;
+        Debug.Log("tobimasu");
     }
 
     void Update()
     {
         transform.position += dir * speed * Time.deltaTime;
-        FlyingOption();
+        Debug.Log("tonderu");
+        //FlyingOption();
     }
 
     protected virtual void FlyingOption()
