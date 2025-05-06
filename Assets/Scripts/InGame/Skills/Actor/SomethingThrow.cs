@@ -41,7 +41,6 @@ public class SomethingThrow : MonoBehaviour, ISkillActor
         //çUåÇîªíËê∂ê¨ÅB
         GameObject item = Instantiate(ac);
         item.transform.position = transform.position;
-        Debug.Log($"Stoneç¿ïWÅF{item.transform.position}");
         item.GetComponent<IThrowable>().ActThrow(targetPos, asbp.ap.throwSpeed);
 
     }

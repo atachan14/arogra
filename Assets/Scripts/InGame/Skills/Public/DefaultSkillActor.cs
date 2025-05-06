@@ -10,6 +10,7 @@ public abstract class DefaultSkillActor : MonoBehaviour, ISkillActor
     [SerializeField] public GameObject ac { get; set; }
 
     public GameObject Target { get; set; }
+    protected GameObject snapTarget;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public abstract class DefaultSkillActor : MonoBehaviour, ISkillActor
 
     public virtual IEnumerator ActCoroutineFlow()
     {
+        snapTarget = Target;
         yield return StartCoroutine(FrontFrame());
         yield return StartCoroutine(MiddleFrame());
         yield return StartCoroutine(BackFrame());

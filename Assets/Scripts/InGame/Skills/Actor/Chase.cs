@@ -5,35 +5,22 @@ using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class Chase : MonoBehaviour, ISkillActor
+public class Chase : DefaultSkillActor
 {
-    SkillsManager sm;
-    SkillsParent sp;
 
-
-    public GameObject Target { get; set; }
-
-
-
-    void Start()
-    {
-        sm = GetComponentInParent<SkillsManager>();
-        sp = GetComponentInParent<SkillsParent>();
-    }
-
-    public IEnumerator ActCoroutineFlow() 
-    {
-        yield return StartCoroutine(ChaseToTarget());
-
-    }
-
-    IEnumerator ChaseToTarget()
+    protected override IEnumerator MiddleFrame()
     {
         yield return null;
-        sm.MainBody.transform.position = Vector3.MoveTowards(
-        sm.MainBody.transform.position,
-        Target.transform.position,
-        sm.Parameter.MoveSpeed * sp.asbp.bp.msBuffPer * Time.deltaTime
+
+        if (Vector3.Distance(transform.position, snapTarget.transform.position) < 1.5f)
+        {
+            yield break;
+        }
+
+        SM.MainBody.transform.position = Vector3.MoveTowards(
+        SM.MainBody.transform.position,
+        snapTarget.transform.position,
+        SM.Parameter.MoveSpeed * SP.asbp.bp.msBuffPer * Time.deltaTime
         );
     }
 }

@@ -266,13 +266,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fp:
-    frontFrame: 0
+    frontFrame: 1
     middleFrame: 0
-    backFrame: 0
+    backFrame: 1
   rp:
     targetRange: 12
     numOfPeaple: 0
-    ct: 4
+    ct: 5
   dp:
     physicDamage:
       use: 0

@@ -8,13 +8,11 @@ public class ToDirThrowable : MonoBehaviour, IThrowable
     {
         dir = targetPos - transform.position;
         this.speed = speed;
-        Debug.Log("tobimasu");
     }
 
     void Update()
     {
         transform.position += dir * speed * Time.deltaTime;
-        Debug.Log("tonderu");
         //FlyingOption();
     }
 
