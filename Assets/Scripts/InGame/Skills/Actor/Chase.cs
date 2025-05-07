@@ -12,6 +12,7 @@ public class Chase : MonoBehaviour, ISkillActor
 
 
     public GameObject Target { get; set; }
+    public GameObject snapTarget {  get; set; }
 
 
 
@@ -23,16 +24,22 @@ public class Chase : MonoBehaviour, ISkillActor
 
     public IEnumerator ActCoroutineFlow() 
     {
+        snapTarget = Target;
         yield return StartCoroutine(ChaseToTarget());
 
     }
 
     IEnumerator ChaseToTarget()
     {
+        if (Vector3.Distance(transform.position, snapTarget.transform.position) < 1.5f)
+        {
+            yield break;
+        }
+
         yield return null;
         sm.MainBody.transform.position = Vector3.MoveTowards(
         sm.MainBody.transform.position,
-        Target.transform.position,
+        snapTarget.transform.position,
         sm.Parameter.MoveSpeed * sp.asbp.bp.msBuffPer * Time.deltaTime
         );
     }

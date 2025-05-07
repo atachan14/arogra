@@ -64,7 +64,7 @@ public class SkillsManager : MonoBehaviour
 
         if (!SkillStateCheck(rc.Need)) return false;
 
-        SkillStateChange(rc.Change);
+        
         Debug.Log($"{skill}î≠âŒÅBSkillState:{State.SkillState}");
 
         return true;
@@ -77,7 +77,8 @@ public class SkillsManager : MonoBehaviour
         var rc = skill.GetComponentInChildren<RequireCkecker>();
         var executor = skill.GetComponentInChildren<ISkillActor>();
         var asbp = skill.GetComponentInChildren<ASBP>();
-        
+
+        SkillStateChange(rc.Change);
         yield return StartCoroutine(executor.ActCoroutineFlow());
         rc.AddCt(asbp.rp.ct);
     }
