@@ -4,7 +4,7 @@ using UnityEngine;
 public class Denkousekka : MonoBehaviour,ISkillActor
 {
     SkillsManager SM;
-    ASBP asbp;
+    SkillParameter asbp;
     GameObject ac;
 
     public GameObject Target { get; set; }
@@ -15,7 +15,7 @@ public class Denkousekka : MonoBehaviour,ISkillActor
     void Start()
     {
         SM = GetComponentInParent<SkillsManager>();
-        asbp = transform.parent.GetComponentInChildren<ASBP>();
+        asbp = transform.parent.GetComponentInChildren<SkillParameter>();
         ac = transform.GetChild(0).gameObject;
 
     }
@@ -35,7 +35,7 @@ public class Denkousekka : MonoBehaviour,ISkillActor
 
     IEnumerator FrontFrame()
     {
-        float duration = asbp.fp.frontFrame;
+        float duration = asbp.fp.frontFrame.value;
         float timer = 0f;
 
         Vector3 startScale = SM.BodySprite.transform.localScale;
@@ -59,7 +59,7 @@ public class Denkousekka : MonoBehaviour,ISkillActor
         SM.BodySprite.transform.localScale = new Vector3(startScale.x * 1.6f, startScale.y, startScale.z);
 
         //éûä‘ê›íË
-        float duration = asbp.fp.middleFrame;
+        float duration = asbp.fp.middleFrame.value;
         float timer = 0f;
 
         //à íuê›íË
@@ -86,7 +86,7 @@ public class Denkousekka : MonoBehaviour,ISkillActor
     {
         ac.SetActive(false);
         SM.BodySprite.transform.localScale = SM.Parameter.NaturalSize();
-        yield return new WaitForSeconds(asbp.fp.backFrame);
+        yield return new WaitForSeconds(asbp.fp.backFrame.value);
         
 
 

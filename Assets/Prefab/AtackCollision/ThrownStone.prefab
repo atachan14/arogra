@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3577635676933912533}
   - component: {fileID: 2324191602205503191}
   m_Layer: 3
-  m_Name: AttackCollision 1
+  m_Name: ThrownStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

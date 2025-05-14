@@ -12,7 +12,7 @@ public class Chase : MonoBehaviour, ISkillActor
 
 
     public GameObject Target { get; set; }
-    public GameObject snapTarget {  get; set; }
+    public GameObject snapTarget;
 
 
 
@@ -31,7 +31,7 @@ public class Chase : MonoBehaviour, ISkillActor
 
     IEnumerator ChaseToTarget()
     {
-        if (Vector3.Distance(transform.position, snapTarget.transform.position) < 1.5f)
+        if (Vector3.Distance(transform.position, snapTarget.transform.position) < 1f)
         {
             yield break;
         }
@@ -40,7 +40,7 @@ public class Chase : MonoBehaviour, ISkillActor
         sm.MainBody.transform.position = Vector3.MoveTowards(
         sm.MainBody.transform.position,
         snapTarget.transform.position,
-        sm.Parameter.MoveSpeed * sp.asbp.bp.msBuffPer * Time.deltaTime
+        sm.Parameter.MoveSpeed * sp.asbp.bp.msBuffPer.value * Time.deltaTime
         );
     }
 }

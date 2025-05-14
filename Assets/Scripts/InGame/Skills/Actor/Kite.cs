@@ -37,7 +37,7 @@ public class Kite : MonoBehaviour,ISkillActor
         sm.MainBody.transform.position = Vector3.MoveTowards(
             currentPos,
             awayPos,
-            sm.Parameter.MoveSpeed * sp.asbp.bp.msBuffPer * Time.deltaTime
+            sm.Parameter.MoveSpeed * sp.asbp.bp.msBuffPer.value * Time.deltaTime
         );
     }
 }

@@ -45,18 +45,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fp:
-    frontFrame: 0.5
-    middleFrame: 2
-    backFrame: 0.5
+    frontFrame:
+      use: 1
+      value: 0
+    middleFrame:
+      use: 1
+      value: 4
+    acFrame:
+      use: 1
+      value: 1
+    backFrame:
+      use: 1
+      value: 1
   rp:
-    targetRange: 12
-    numOfPeaple: 3
-    ct: 12
+    targetRange:
+      use: 1
+      value: 10
+    numOfPeaple:
+      use: 1
+      value: 3
+    ct:
+      use: 1
+      value: 8
+  dp:
+    physicDamage:
+      use: 0
+      value: 0
+    magicDamage:
+      use: 1
+      value: 0
   ap:
-    actCount: 4
-    acRange: 0
+    actCount:
+      use: 0
+      value: 0
+    acRange:
+      use: 0
+      value: 0
+    throwSpeed:
+      use: 0
+      value: 0
   bp:
-    msBuffPer: 0
+    msBuffPer:
+      use: 0
+      value: 0
 --- !u!1 &2494041021604557504
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c644f5acf8031468b7558abf43e726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 0}
 --- !u!1 &3541129258485720094
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,9 @@
+,,,,,,,,,,,,,,,,,
+,Name,FP_Front,FP_Middle,FP_Ac,FP_Back,RP_Range,RP_Peaple,RP_Ct,DP_Phys,DP_Elect,DP_Frost,DP_Dark,AP_Length,AP_Width,AP_Count,AP_BulletSpeed,BP_MsPer
+,Chase,,,,,12,,0,,,,,,,,,1.5
+,Kite,,,,,10,,0,,,,,,,,,0.8
+,Bite,1,1,1,0,1.5,,4,50,,,,1,0.5,1,,
+,Denkousekka,1,0.2,0.2,0.8,10,,5,50,10,,,1,1,1,,
+,TaleAttack,0.3,0.3,0.3,0.3,1.5,,3,50,10,,,1,0.5,1,,
+,V10man,0.2,0.6,0.1,0.2,8,,15,,25,,,8,,4,,
+,ThrowStone,0.5,0.3,,0.2,12,,5,10,,,,0.5,,1,3,

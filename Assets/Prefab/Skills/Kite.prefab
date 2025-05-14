@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1704601268641839605}
-  - component: {fileID: 3095496548321791359}
+  - component: {fileID: 6319903317945157145}
   m_Layer: 3
   m_Name: ASBP
   m_TagString: Untagged
@@ -122,7 +122,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4585601306971490742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3095496548321791359
+--- !u!114 &6319903317945157145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,30 +131,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6450265812823033259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d33aa0a526063fc4c9cd17c402676b95, type: 3}
+  m_Script: {fileID: 11500000, guid: b94aa38e3841c9b45a2975a49c79a6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fp:
-    frontFrame: 0
-    middleFrame: 0
-    backFrame: 0
-  rp:
-    targetRange: 10
-    numOfPeaple: 0
-    ct: 0
-  dp:
-    physicDamage:
-      use: 0
-      value: 0
-    magicDamage:
-      use: 0
-      value: 0
-  ap:
-    actCount: 0
-    acRange: 0
-    throwSpeed: 0
-  bp:
-    msBuffPer: 1
 --- !u!1 &6948634558440969145
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471993299e1d26246b4f2dcfa52573c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillID: Kite
 --- !u!1 &8180804492732581515
 GameObject:
   m_ObjectHideFlags: 0

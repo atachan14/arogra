@@ -6,7 +6,7 @@ public class ToMultiAOE : DefaultTargetChecker
 {
     public override bool SetupAndCheckTarget()
     {
-        if (targetList.Count >= sp.asbp.rp.numOfPeaple)
+        if (targetList.Count >= sp.asbp.rp.numOfPeaple.value)
         {
             return true;
         }

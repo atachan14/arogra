@@ -4,7 +4,7 @@ using UnityEngine;
 public class SomethingThrow : MonoBehaviour, ISkillActor
 {
     SkillsManager SM;
-    ASBP asbp;
+    SkillParameter asbp;
     [SerializeField] GameObject ac;
 
     public GameObject Target { get; set; }
@@ -14,7 +14,7 @@ public class SomethingThrow : MonoBehaviour, ISkillActor
     void Start()
     {
         SM = GetComponentInParent<SkillsManager>();
-        asbp = transform.parent.GetComponentInChildren<ASBP>();
+        asbp = transform.parent.GetComponentInChildren<SkillParameter>();
     }
 
 
@@ -29,7 +29,7 @@ public class SomethingThrow : MonoBehaviour, ISkillActor
 
     IEnumerator FrontFrame()
     {
-        yield return new WaitForSeconds(asbp.fp.frontFrame);
+        yield return new WaitForSeconds(asbp.fp.frontFrame.value);
     }
 
     IEnumerator MiddleFrame()
@@ -39,16 +39,16 @@ public class SomethingThrow : MonoBehaviour, ISkillActor
         Vector3 targetPos = Target.transform.position;
        
         //çUåÇîªíËê∂ê¨ÅB
-        GameObject item = Instantiate(ac);
+        GameObject item = Instantiate(ac, transform);
         item.transform.position = transform.position;
-        item.GetComponent<IThrowable>().ActThrow(targetPos, asbp.ap.throwSpeed);
+        item.GetComponent<IThrowable>().ActThrow(targetPos, asbp.ap.bulletSpeed.value);
 
     }
 
     IEnumerator BackFrame()
     {
 
-        yield return new WaitForSeconds(asbp.fp.backFrame);
+        yield return new WaitForSeconds(asbp.fp.backFrame.value);
     }
 }
 

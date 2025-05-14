@@ -15,7 +15,7 @@ public abstract class DefaultTargetChecker : MonoBehaviour, ITargetChecker
 
     void SetupCollider()
     {
-        GetComponent<CircleCollider2D>().radius = sp.asbp.rp.targetRange;
+        GetComponent<CircleCollider2D>().radius = sp.asbp.rp.targetRange.value;
         Debug.Log($"{this}SetupColliderŠ®—¹Bsp:{sp}");
     }
 

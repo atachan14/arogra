@@ -76,11 +76,11 @@ public class SkillsManager : MonoBehaviour
     {
         var rc = skill.GetComponentInChildren<RequireCkecker>();
         var executor = skill.GetComponentInChildren<ISkillActor>();
-        var asbp = skill.GetComponentInChildren<ASBP>();
+        SkillParameter sbp = skill.GetComponentInChildren<SkillParameter>();
 
         SkillStateChange(rc.Change);
         yield return StartCoroutine(executor.ActCoroutineFlow());
-        rc.AddCt(asbp.rp.ct);
+        rc.AddCt(sbp.rp.ct.value);
     }
 
 
